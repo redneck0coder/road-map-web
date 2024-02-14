@@ -1,0 +1,23 @@
+<div class="mt-8 flex align-items-center justify-content-center">
+  <p-card class="w-4">
+      <form [formGroup]="formGroup">
+        <div class="card flex flex-column gap-3">
+          <p-inputGroup>
+            <p-inputGroupAddon>
+              <i class="pi pi-user"></i>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Email" formControlName="email" />
+          </p-inputGroup>
+
+          <p-inputGroup>
+            <p-inputGroupAddon>
+              <i class="pi pi-lock"></i>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Пароль" formControlName="password" />
+          </p-inputGroup>
+
+          <p-button label="Вход"></p-button>
+        </div>
+      </form>
+  </p-card>
+</div>

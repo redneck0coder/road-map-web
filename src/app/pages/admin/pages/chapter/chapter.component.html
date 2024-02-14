@@ -1,0 +1,15 @@
+<rm-link-back routeLink="/admin/chapters" [severity]="''"></rm-link-back>
+<div class="w-full p-4">
+  <p-card styleClass="py-0">
+    <h2>Создание статьи</h2>
+    <div class="flex align-items-center mb-4">
+      <p-dropdown [options]="topicService.getAll()"
+                  [(ngModel)]="selectedTopic"
+                  optionLabel="name"
+                  placeholder="Выберите раздел статьи">
+      </p-dropdown>
+    </div>
+    <textarea class="w-full mb-4" [rows]="16" pInputTextarea></textarea>
+    <p-button>Создать</p-button>
+  </p-card>
+</div>

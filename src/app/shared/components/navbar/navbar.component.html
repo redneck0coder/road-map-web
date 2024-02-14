@@ -1,0 +1,10 @@
+<nav>
+  <ul class="p-0 m-0">
+    <li [routerLink]="['/', topic]">
+      {{ topic }}
+    </li>
+    @for(chapter of chaptersService.getAll(); track chapter.id) {
+      <li [routerLink]="['/'+topic, chapter.id]">{{chapter.name}}</li>
+    }
+  </ul>
+</nav>

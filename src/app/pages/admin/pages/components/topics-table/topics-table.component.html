@@ -1,0 +1,63 @@
+<p-table [value]="topicService.getAll()">
+  <ng-template pTemplate="caption">
+    <p-button label="Добавить раздел"
+              icon="pi pi-plus"
+              [rounded]="true"
+              [outlined]="true"
+              (click)="showDialog()">
+    </p-button>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-left">Раздел</th>
+      <th class="text-right">Действия</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-topic>
+    <tr>
+      <td class="text-left">{{ topic.name }}</td>
+      <td>
+        <div class="flex justify-content-end align-items-center gap-3">
+          <p-button (click)="edit(topic)" icon="pi pi-pencil" [rounded]="true" [outlined]="true"></p-button>
+          <p-button (click)="delete(topic)" icon="pi pi-trash" [rounded]="true" severity="danger" [outlined]="true"></p-button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog #dialog [header]="editDialog ? 'Редактирования раздела' : 'Добавление раздела'"
+          [(visible)]="visibleModal"
+          [modal]="true"
+          [style]="{ width: '50vw' }"
+          [draggable]="false"
+          [resizable]="false"
+          (onHide)="clearFormGroup()">
+    <form class="flex flex-column align-items-center justify-content-center gap-5 py-4" [formGroup]="formGroup">
+      <span class="p-float-label w-full">
+          <input pInputText id="title" class="w-full" formControlName="name" />
+          <label for="title">Наименование</label>
+      </span>
+
+      <span class="p-float-label w-full">
+        <textarea pInputTextarea
+                  id="description"
+                  class="w-full"
+                  rows="5"
+                  cols="30"
+                  formControlName="description">
+        </textarea>
+        <label for="description">Описание</label>
+      </span>
+
+      <div class="w-full">
+        <p-button [label]="editDialog ? 'Редактировать' : 'Добавить'"
+                  icon="pi pi-plus"
+                  class="w-full"
+                  [rounded]="true"
+                  [outlined]="true"
+                  (click)="editDialog ? editTopic($event) : createTopic($event)">
+        </p-button>
+      </div>
+    </form>
+</p-dialog>

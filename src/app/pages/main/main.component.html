@@ -1,9 +1,16 @@
 <main class="p-3">
-  <section class="text-center">
-    <p><span class="text-xl">SimpleRoadMap 2024</span> - это небольшая настольная книга по веб технологиям.</p>
-    <p>
-      Тут вы найдете описание по базовым знаниям веб технологий. Сервис разбит на разделы, в которых  есть
-      статьи основные понятия
-    </p>
+  <section class="flex flex-column align-items-start justify-content-center h-10rem">
+    <p><span class="text-xl font-bold">SimpleRoadMap 2024</span> - это настольная книга по веб технологиям.</p>
+    <p>На сайте собраны базовые знания, которые помогут вам в написание собственных веб-приложений.</p>
+  </section>
+  <section>
+    <h2 class="text-center">Разделы</h2>
+    <div class="flex justify-content-center align-items-start">
+      @for (topic of topicService.getAll(); track topic.id) {
+        <a [routerLink]="['/', topic.name]" class="m-4 no-underline" [style.min-width]="'200px'">
+          <p-card [header]="topic.name"></p-card>
+        </a>
+      }
+    </div>
   </section>
 </main>
